@@ -54,5 +54,9 @@ docs/_build/
 target/
 
 # MAC
-.DS_STORE
+.DS_Store
+**/.DS_Store
 
+#PyDev
+*.pydevproject
+.project
