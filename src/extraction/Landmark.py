@@ -225,17 +225,23 @@ def main(argv=None):
                 
         except getopt.error, msg:
             raise Usage(msg)
-        
-        #read the page from arg0
-        page_file_str = args[0]
-        with codecs.open(page_file_str, "r", "utf-8") as myfile:
-            page_str = myfile.read().encode('utf-8')
+        if len(args) > 1:
+                #read the page from arg0
+                page_file_str = args[0]
+                with codecs.open(page_file_str, "r", "utf-8") as myfile:
+                    page_str = myfile.read().encode('utf-8')
 
-        #read the rules from arg1
-        json_file_str = args[1]
-        with codecs.open(json_file_str, "r", "utf-8") as myfile:
+                #read the rules from arg1
+                json_file_str = args[1]
+        else:
+	        #read the page from stdin
+	        page_str = sys.stdin.read().encode('utf-8')
+
+		#read the rules from arg0
+		json_file_str = args[0]
+
+	with codecs.open(json_file_str, "r", "utf-8") as myfile:
             json_str = myfile.read().encode('utf-8')
-        
         json_object = json.loads(json_str)
         rules = RuleSet(json_object)
         

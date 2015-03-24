@@ -2,10 +2,13 @@
 
 ## Running
 No third party libraries are necessary. Run the following from the command line
-python Landmark.py <OPTIONAL_PARAMS> <FILE_TO_EXTRACT_FROM> <RULES_FILE>
 
-<OPTIONAL_PARAMS>
--f: Flatten the file
+```
+python Landmark.py [OPTIONAL_PARAMS] [FILE_TO_EXTRACT_FROM] RULES_FILE
+
+[OPTIONAL_PARAMS] -f: Flatten the file
+If FILE_TO_EXTRACT_FROM is not given, input will be taken on stdin.
+```
 
 ### Examples
 ```
