@@ -16,6 +16,10 @@
 import abc
 import re
 
+def removeExtraSpaces(input_string):
+    processor = RemoveExtraSpaces(input_string)
+    return processor.post_process()
+
 class Processor(object):
     __metaclass__ = abc.ABCMeta
     
@@ -28,7 +32,8 @@ class Processor(object):
 
 class RemoveExtraSpaces(Processor):
     def post_process(self):
-        return re.sub("\\s+", " ", self.input_string).strip()
+        nbsp = re.sub('&nbsp;', ' ', self.input_string)
+        return re.sub("\\s+", " ", nbsp).strip()
         
     def __init__(self, input_string):
         Processor.__init__(self, input_string)
@@ -60,3 +65,6 @@ class RemoveHtml(Processor):
         startOfTagOnly = "<([^ \t][^>]*)?$"
         endOfTagOnly = "^([^<]*[^ \t])?>"
         self.patternString = singleCharacterTag + "|" + startAndEndOfTag + "|" + startOfTagOnly + "|" + endOfTagOnly
+
+if __name__ == '__main__':
+    pass

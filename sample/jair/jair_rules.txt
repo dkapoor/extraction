@@ -1,34 +1,34 @@
 [
     {
         "name": "title",
-        "rule_type": "RegexRule",
-        "begin_regex": "<meta name=\"citation_title\" content=\"",
-        "end_regex": "\">"
+        "rule_type": "ItemRule",
+        "begin_regex": "\\<meta name=\"citation_title\" content=\"",
+        "end_regex": "\"\\>"
     },
     {
-        "name": "abstract",
-        "rule_type": "RegexRule",
-        "begin_regex": "<div class=\"abstract\">.*?</a></p>.*?<p>",
-        "end_regex": "</p>.*?<a"
+	    "begin_regex": "\\</a\\>\\</p\\>\n\\<p\\>",
+	    "end_regex": "\\</p\\>\n\\<a href=\"/vol/",
+	    "name": "abstract",
+	    "rule_type": "ItemRule"
     },
 	{
         "name": "authors",
-        "rule_type": "RegexIterationRule",
-        "begin_regex": "<meta",
-        "end_regex": "</div>",
+        "rule_type": "IterationRule",
+        "begin_regex": "\\<meta",
+        "end_regex": "\\</div\\>",
         "iter_begin_regex": "citation_author\" content=\"",
-        "iter_end_regex": "\">"
+        "iter_end_regex": "\"\\>"
     },
     {
         "name": "volume",
-        "rule_type": "RegexRule",
-        "begin_regex": "<meta name=\"citation_publication_date\" content=\"",
-        "end_regex": "\">"
+        "rule_type": "ItemRule",
+        "begin_regex": "\\<meta name=\"citation_publication_date\" content=\"",
+        "end_regex": "\"\\>"
     },
 	{
         "name": "pages",
-        "rule_type": "RegexRule",
+        "rule_type": "ItemRule",
         "begin_regex": ", pages ",
-        "end_regex": "</cite>"
+        "end_regex": "\\</cite\\>"
     }
 ]
